@@ -1,5 +1,5 @@
 from sqlalchemy.orm import Session
-from api.models import models, schemas
+from .models import models, schemas
 
 def create(db: Session, sandwich: schemas.SandwichCreate):
     db_sandwich = models.Sandwich(name=sandwich.name, ingredients=sandwich.ingredients)
