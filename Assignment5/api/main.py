@@ -20,12 +20,6 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-
-@app.post("/orders/", response_model=schemas.Order, tags=["Orders"])
-def create_order(order: schemas.OrderCreate, db: Session = Depends(get_db)):
-    return orders.create(db=db, order=order)
-
-
 @app.get("/orders/", response_model=list[schemas.Order], tags=["Orders"])
 def read_orders(db: Session = Depends(get_db)):
     return orders.read_all(db)
